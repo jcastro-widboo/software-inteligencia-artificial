@@ -1,0 +1,175 @@
+<!-- 
+UNIVERSIDAD UTE
+INTELIGENCIA ARTIFICIAL
+INTEGRANTES: AVALOS FRANCISCO; CASTRO JORGE; ECHEVERRIA CRISTHIAN; NAVARRO MILTON
+-->
+
+<!DOCTYPE HTML>
+
+<html lang="es">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <title>INTELIGENCIA ARTIFICIAL</title>
+
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./lib/themes/jquery.ui.all.css" />
+
+    <script type="text/javascript" src="./lib/raphael-min.js"></script>
+    <script type="text/javascript" src="./lib/es5-shim.min.js"></script>
+    <script type="text/javascript" src="./lib/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="./lib/state-machine.min.js"></script>
+    <script type="text/javascript" src="./lib/async.min.js"></script>
+
+    <script type="text/javascript" src="./lib/ui/jquery.ui.core.min.js"></script>
+    <script type="text/javascript" src="./lib/ui/jquery.ui.widget.min.js"></script>
+    <script type="text/javascript" src="./lib/ui/jquery.ui.mouse.min.js"></script>
+    <script type="text/javascript" src="./lib/ui/jquery.ui.draggable.min.js"></script>
+    <script type="text/javascript" src="./lib/ui/jquery.ui.accordion.min.js"></script>
+    <script type="text/javascript" src="./lib/ui/jquery.ui.slider.min.js"></script>
+
+    <script type="text/javascript" src="./lib/pathfinding-browser.min.js"></script>
+
+    <script type="text/javascript" src="./js/view.js"></script>
+    <script type="text/javascript" src="./js/controller.js"></script>
+    <script type="text/javascript" src="./js/panel.js"></script>
+    <script type="text/javascript" src="./js/main.js"></script>
+
+  </head>
+
+  <body>
+  
+    <div id="draw_area"></div>
+
+    <div id="algorithm_panel" class="panel right_panel">
+
+	    <center><img width="100" height="100" src="img/logoute.png"></center>
+	    <p align="center">UNIVERSIDAD UTE</p> 
+	    <p align="center">INTELIGENCIA ARTIFICIAL</p><br/>
+	    <p>- AVALOS FRANCISCO</p> 
+	    <p>- CASTRO JORGE</p> 
+	    <p>- ECHEVERRIA CRISTHIAN</p> 
+	    <p>- NAVARRO MILTON</p> 
+      <br/>
+
+      <header><h2 class="header_title">ALGORITMO:</h2></header>
+
+      <div class="accordion">
+        <h3 id="astar_header"><a href="#">A*</a></h3>
+        <div id="astar_section" class="finder_section">
+          <header class="option_header">
+            <h3>HEURISTICO</h3>
+          </header>
+          <div id="astar_heuristic" class="sub_options">
+            <input type="radio" name="astar_heuristic" value="manhattan" checked />
+            <label class="option_label">Manhattan</label> <br>
+            <input type="radio" name="astar_heuristic" value="euclidean"/>
+            <label class="option_label">Euclidean</label> <br>
+            <input type="radio" name="astar_heuristic" value="octile"/>
+            <label class="option_label">Octile</label> <br>
+            <input type="radio" name="astar_heuristic" value="chebyshev"/>
+            <label class="option_label">Chebyshev</label> <br>
+          </div>
+
+          <header class="option_header">
+            <h3>OPCIONES</h3>
+          </header>
+          <div class="optional sub_options">
+            <input type="checkbox" class="allow_diagonal" checked>
+            <label class="option_label">Todo Diagonal</label> <br>
+            <input type="checkbox" class="bi-directional">
+            <label class="option_label">Bi direccional</label> <br>
+            <input type="checkbox" class="dont_cross_corners">
+            <label class="option_label">No cruzar esquinas</label> <br>
+            <input class="spinner" name="astar_weight" value="1">
+            <label class="option_label">Peso</label> <br>
+          </div>
+        </div>
+
+        <h3 id="ida_header"><a href="#">IDA*</a></h3>
+        <div id="ida_section" class="finder_section">
+          <header class="option_header">
+            <h3>HEURISTICO</h3>
+          </header>
+          <div id="ida_heuristic" class="sub_options">
+            <input type="radio" name="ida_heuristic" value="manhattan" checked />
+            <label class="option_label">Manhattan</label> <br>
+            <input type="radio" name="ida_heuristic" value="euclidean"/>
+            <label class="option_label">Euclidean</label> <br>
+            <input type="radio" name="ida_heuristic" value="octile"/>
+            <label class="option_label">Octile</label> <br>
+            <input type="radio" name="ida_heuristic" value="chebyshev"/>
+            <label class="option_label">Chebyshev</label> <br>
+          </div>
+          <header class="option_header">
+            <h3>OPCIONES</h3>
+          </header>
+          <div class="optional sub_options">
+            <input type="checkbox" class="allow_diagonal" checked>
+            <label class="option_label">Todo Diagonal</label> <br>
+            <input type="checkbox" class="dont_cross_corners">
+            <label class="option_label">No cruzar esquinas</label> <br>
+            <input class="spinner" name="astar_weight" value="1">
+            <label class="option_label">Peso</label> <br>
+            <input class="spinner" name="time_limit" value="10">
+            <label class="option_label">Limite en segundos</label> <br>
+            <input type="checkbox" class="track_recursion" checked />
+            <label class="option_label">Visualizar recursion</label> <br>
+          </div>
+        </div>
+
+        <h3 id="bestfirst_header"><a href="#">La Mejor Primera Búsqueda</a></h3>
+        <div id="bestfirst_section" class="finder_section">
+          <header class="option_header">
+            <h3>HEURISTICO</h3>
+          </header>
+          <div id="bestfirst_heuristic" class="sub_options">
+            <input type="radio" name="bestfirst_heuristic" value="manhattan" checked />
+            <label class="option_label">Manhattan</label> <br>
+            <input type="radio" name="bestfirst_heuristic" value="euclidean"/>
+            <label class="option_label">Euclidean</label> <br>
+            <input type="radio" name="bestfirst_heuristic" value="octile"/>
+            <label class="option_label">Octile</label> <br>
+            <input type="radio" name="bestfirst_heuristic" value="chebyshev"/>
+            <label class="option_label">Chebyshev</label> <br>
+          </div>
+
+          <header class="option_header">
+            <h3>OPCIONES</h3>
+          </header>
+          <div class="optional sub_options">
+            <input type="checkbox" class="allow_diagonal" checked>
+            <label class="option_label">Todo Diagonal</label> <br>
+            <input type="checkbox" class="bi-directional">
+            <label class="option_label">Bi direccional</label> <br>
+            <input type="checkbox" class="dont_cross_corners">
+            <label class="option_label">No cruzar esquinas</label> <br>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+      </div>
+
+    </div>
+
+    <div id="play_panel" class="panel right_panel">
+
+      <button id="button1" class="control_button">Iniciar</button>
+      <button id="button2" class="control_button">Pausar</button>
+      <button id="button3" class="control_button">Borrar</button>
+
+    </div>
+
+    <div id="stats"></div>
+
+    <footer>
+
+    </footer>
+
+  </body>
+
+</html>
